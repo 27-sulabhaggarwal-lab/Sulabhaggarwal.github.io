@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sulabh Aggarwal — Direct Taxation &amp; Equity Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2b45;
+    --ink-soft:#3c4a63;
+    --paper:#f7f4ec;
+    --paper-raised:#fffdf9;
+    --line:#dcd0b4;
+    --gold:#9c6f18;
+    --gold-deep:#7c5813;
+    --gold-tint:#efe4c4;
+    --slate:#68707d;
+    --buy:#2e6b4f;
+    --hold:#9c6f18;
+    --sell:#9c3a3a;
+    --max:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .rule{border:none;border-top:1px solid var(--line);margin:0;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,244,236,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:14px;padding-bottom:14px;
+  }
+  .brand{font-family:'Fraunces',serif;font-size:19px;font-weight:600;letter-spacing:0.01em;}
+  .navlinks{display:flex;gap:28px;font-size:14.5px;}
+  .navlinks a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .15s;}
+  .navlinks a:hover{border-color:var(--gold);color:var(--ink);}
+  .navtoggle{display:none;background:none;border:1px solid var(--line);border-radius:4px;padding:6px 10px;font-size:14px;color:var(--ink);cursor:pointer;}
+
+  /* ---------- header / identity ---------- */
+  header.identity{padding:64px 0 0;}
+  .id-grid{
+    display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;
+  }
+  .avatar{
+    width:104px;height:104px;border-radius:50%;
+    background:var(--ink);color:var(--gold-tint);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:34px;font-weight:500;
+    border:3px solid var(--gold);flex-shrink:0;
+  }
+  .eyebrow-note{
+    font-size:12px;color:var(--slate);margin-top:8px;text-align:center;max-width:104px;
+  }
+  h1.name{font-size:44px;line-height:1.08;letter-spacing:-0.01em;}
+  .positioning{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:19px;color:var(--ink-soft);margin-top:14px;max-width:56ch;line-height:1.5;
+  }
+  .credential-line{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold-deep);
+    margin-top:16px;letter-spacing:0.01em;
+  }
+  .contact-row{
+    display:flex;flex-wrap:wrap;gap:0;margin-top:22px;border-top:1px solid var(--line);
+  }
+  .contact-item{
+    padding:12px 20px 12px 0;margin-right:20px;border-right:1px solid var(--line);
+    font-size:14px;color:var(--ink-soft);
+  }
+  .contact-item:last-child{border-right:none;}
+  .contact-item a{text-decoration:none;color:var(--ink-soft);}
+  .contact-item a:hover{color:var(--gold-deep);}
+  .contact-item span{display:block;font-size:11px;color:var(--slate);text-transform:none;letter-spacing:0.02em;margin-bottom:2px;}
+
+  .cta-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:500;
+    padding:11px 20px;border-radius:2px;text-decoration:none;
+    border:1px solid var(--ink);color:var(--ink);
+    transition:background .15s,color .15s;
+  }
+  .btn:hover{background:var(--ink);color:var(--paper-raised);}
+  .btn.primary{background:var(--ink);color:var(--paper-raised);}
+  .btn.primary:hover{background:var(--gold-deep);border-color:var(--gold-deep);}
+  .btn.ph{border:1px dashed var(--gold);color:var(--gold-deep);font-size:13px;}
+  .btn.ph:hover{background:var(--gold-tint);color:var(--gold-deep);}
+
+  /* ---------- stat / ledger strip ---------- */
+  .stat-strip{
+    margin-top:56px;background:var(--gold-tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .stat-strip .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);padding:0;
+  }
+  .stat{
+    padding:26px 20px;border-right:1px solid var(--line);text-align:left;
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--gold-deep);font-weight:500;}
+  .stat .lbl{font-size:12.5px;color:var(--ink-soft);margin-top:4px;}
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0;}
+  section.tight{padding-top:0;}
+  .section-head{margin-bottom:40px;max-width:60ch;}
+  .section-head h2{font-size:28px;}
+  .section-head p{color:var(--slate);font-size:15px;margin-top:8px;}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-deep);margin-bottom:10px;}
+
+  /* ---------- project statement rows ---------- */
+  .project{
+    border-top:1px solid var(--line);padding:40px 0;
+  }
+  .project:last-child{border-bottom:1px solid var(--line);}
+  .project-head{
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:6px;
+  }
+  .project-head h3{font-size:22px;}
+  .project-meta{font-size:13px;color:var(--slate);font-family:'IBM Plex Mono',monospace;}
+  .role-line{font-size:14px;color:var(--ink-soft);margin-top:6px;margin-bottom:22px;}
+  .role-line strong{color:var(--ink);}
+  .ppo{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line);
+  }
+  .ppo-col{padding:20px 22px;border-right:1px solid var(--line);}
+  .ppo-col:last-child{border-right:none;}
+  .ppo-col h4{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:none;letter-spacing:0.03em;
+    color:var(--gold-deep);margin-bottom:10px;font-weight:500;
+  }
+  .ppo-col p{font-size:14px;color:var(--ink-soft);margin:0 0 14px;}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+  .chip{font-size:12px;font-family:'IBM Plex Mono',monospace;padding:3px 9px;border-radius:2px;}
+  .chip.buy{background:rgba(46,107,79,0.12);color:var(--buy);}
+  .chip.hold{background:rgba(156,111,24,0.14);color:var(--hold);}
+  .chip.sell{background:rgba(155,58,58,0.12);color:var(--sell);}
+
+  /* ---------- skills / tools ledger ---------- */
+  .split{
+    display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .split-col{padding:28px 30px;}
+  .split-col:first-child{border-right:1px solid var(--line);}
+  .split-col h3{font-size:16px;margin-bottom:16px;}
+  .led-list{list-style:none;margin:0;padding:0;}
+  .led-list li{
+    display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;
+  }
+  .led-list li:first-child{border-top:none;}
+  .led-list .lvl{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--slate);}
+
+  /* ---------- track record ---------- */
+  .record{border-top:1px solid var(--line);padding:28px 0;}
+  .record:last-child{border-bottom:1px solid var(--line);}
+  .record-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .record-head h3{font-size:18px;}
+  .record-head span{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--slate);}
+  .record-org{font-size:14px;color:var(--gold-deep);margin-top:2px;}
+  .record ul{margin:14px 0 0;padding-left:18px;font-size:14.5px;color:var(--ink-soft);}
+  .record li{margin-bottom:7px;}
+
+  /* ---------- two-up small lists (achievements) ---------- */
+  .two-up{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);}
+  .two-up-col{padding:24px 26px;}
+  .two-up-col:first-child{border-right:1px solid var(--line);}
+  .two-up-col h3{font-size:16px;margin-bottom:12px;}
+  .two-up-col ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--ink-soft);}
+  .two-up-col li{margin-bottom:8px;}
+
+  /* ---------- certifications ---------- */
+  .cert-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid var(--line);flex-wrap:wrap;gap:10px;}
+  .cert-row:last-child{border-bottom:1px solid var(--line);}
+  .cert-name{font-size:14.5px;}
+  .cert-name span{display:block;font-size:12.5px;color:var(--slate);margin-top:2px;}
+
+  /* ---------- footer ---------- */
+  footer{padding:48px 0 60px;border-top:1px solid var(--line);}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  footer .brand{margin-bottom:8px;}
+  footer .navlinks{font-size:13.5px;}
+  .footer-note{font-size:12.5px;color:var(--slate);margin-top:24px;}
+
+  @media (max-width:760px){
+    .navlinks{display:none;}
+    .navtoggle{display:inline-block;}
+    .navlinks.open{
+      display:flex;flex-direction:column;position:absolute;top:56px;right:0;left:0;
+      background:var(--paper-raised);border-bottom:1px solid var(--line);padding:16px 28px;gap:14px;
+    }
+    .id-grid{grid-template-columns:1fr;}
+    .avatar{width:84px;height:84px;font-size:28px;}
+    h1.name{font-size:32px;}
+    .stat-strip .wrap{grid-template-columns:1fr 1fr;}
+    .stat{border-bottom:1px solid var(--line);}
+    .ppo{grid-template-columns:1fr;}
+    .ppo-col{border-right:none;border-top:1px solid var(--line);}
+    .ppo-col:first-child{border-top:none;}
+    .split{grid-template-columns:1fr;}
+    .split-col:first-child{border-right:none;border-bottom:1px solid var(--line);}
+    .two-up{grid-template-columns:1fr;}
+    .two-up-col:first-child{border-right:none;border-bottom:1px solid var(--line);}
+    .contact-item{border-right:none;margin-right:0;width:100%;padding:10px 0;border-bottom:1px solid var(--line);}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Sulabh Aggarwal</div>
+    <div class="navlinks" id="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills &amp; tools</a>
+      <a href="#record">Track record</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu">Menu</button>
+  </div>
+</nav>
+
+<header class="identity">
+  <div class="wrap">
+    <div class="id-grid">
+      <div>
+        <div class="avatar">SA</div>
+        <div class="eyebrow-note">Replace with a plain-background headshot</div>
+      </div>
+      <div>
+        <h1 class="name">Sulabh Aggarwal</h1>
+        <p class="positioning">Direct-tax and equity-research specialist who turns regulatory detail into investor-ready calls — built on hands-on ITR filing, TDS reconciliation, and sell-side stock analysis.</p>
+        <div class="credential-line">PGDM (FINANCIAL MANAGEMENT), 2025&ndash;27 &nbsp;/&nbsp; FORTUNE INSTITUTE OF INTERNATIONAL BUSINESS, NEW DELHI &nbsp;/&nbsp; TARGETING: ASSISTANT MANAGER &mdash; ACCOUNTING, DIRECT TAXATION, INCOME TAX</div>
+
+        <div class="contact-row">
+          <div class="contact-item"><span>Phone</span><a href="tel:+917087535950">+91 70875 35950</a></div>
+          <div class="contact-item"><span>Email</span><a href="mailto:27-sulabh.aggarwal@fiib.edu.in">27-sulabh.aggarwal@fiib.edu.in</a></div>
+          <div class="contact-item"><span>Location</span>New Delhi, NCR</div>
+          <div class="contact-item"><span>LinkedIn</span><a href="https://www.linkedin.com/in/sulabh-aggarwal" target="_blank" rel="noopener">/in/sulabh-aggarwal</a></div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#" target="_blank" rel="noopener">Download resume (PDF)</a>
+          <a class="btn" href="https://www.linkedin.com/in/sulabh-aggarwal" target="_blank" rel="noopener">View LinkedIn</a>
+          <a class="btn ph" href="#certifications">Certifications ↓</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stat-strip">
+  <div class="wrap">
+    <div class="stat"><div class="num">10</div><div class="lbl">auto-sector stocks valued</div></div>
+    <div class="stat"><div class="num">4/3/3</div><div class="lbl">Buy / Hold / Sell calls issued</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl">ITRs filed as assistant to accountant</div></div>
+    <div class="stat"><div class="num">₹36L</div><div class="lbl">insurance premium value generated</div></div>
+  </div>
+</div>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Selected work</div>
+      <h2>Projects</h2>
+      <p>Each entry follows purpose, process, and outcome — what the work was for, what I personally did, and what it produced.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Equity Research Report: Automobile Industry</h3>
+        <div class="project-meta">Aditya Birla Capital · CIP · Apr&ndash;Jun 2026</div>
+      </div>
+      <div class="role-line"><strong>My role:</strong> Equity Research Analyst (Corporate Internship Programme). Built and owned the valuation model end to end.</div>
+      <div class="ppo">
+        <div class="ppo-col">
+          <h4>Purpose</h4>
+          <p>Investors needed sector-wide, tax-aware stock calls across India's large-cap automobile OEMs to guide portfolio decisions.</p>
+          <a class="btn ph" href="#">Add link to brief</a>
+        </div>
+        <div class="ppo-col">
+          <h4>Process</h4>
+          <p>Valued 9 large-cap OEMs (Maruti, Tata Motors, Hyundai, M&amp;M, Bajaj Auto, Hero MotoCorp, Eicher, TVS, Ola Electric/Ather) using EIC analysis, dual P/E and PEG screening, and DCF/FCFF valuation, layered with multi-timeframe technical analysis (RSI, MACD, Bollinger Bands, DMAs) and post-tax return implications for client portfolios.</p>
+          <a class="btn ph" href="#">Add link to model</a>
+        </div>
+        <div class="ppo-col">
+          <h4>Outcome</h4>
+          <p>Delivered a formal report with 4 Buy, 3 Hold, 3 Sell calls, and converted 3 client leads into confirmed investment-linked insurance policies worth ~₹36L in premium value.</p>
+          <div class="chips">
+            <span class="chip buy">4 Buy</span>
+            <span class="chip hold">3 Hold</span>
+            <span class="chip sell">3 Sell</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Tax Efficiency &amp; Financial Ratio Benchmarking</h3>
+        <div class="project-meta">Corporate Mentorship Programme, FIIB · Jun 2025&ndash;Present</div>
+      </div>
+      <div class="role-line"><strong>My role:</strong> Financial Analyst, working directly with the mentor on a real venture company.</div>
+      <div class="ppo">
+        <div class="ppo-col">
+          <h4>Purpose</h4>
+          <p>The mentor needed an independent read on a venture company's tax position and financial health for panel review.</p>
+          <a class="btn ph" href="#">Add link to brief</a>
+        </div>
+        <div class="ppo-col">
+          <h4>Process</h4>
+          <p>Analyzed 5 years of financial statements, benchmarking effective tax rate and tax-to-revenue alongside core financial ratios, and modelled growth scenarios in Excel.</p>
+          <a class="btn ph" href="#">Add link to workbook</a>
+        </div>
+        <div class="ppo-col">
+          <h4>Outcome</h4>
+          <p>A structured financial and tax health assessment presented to the mentor panel, informing the company's strategic outlook.</p>
+          <a class="btn ph" href="#">Add link to summary</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Smart Parking System</h3>
+        <div class="project-meta">University Project · Sep&ndash;Nov 2022</div>
+      </div>
+      <div class="role-line"><strong>My role:</strong> Systems Designer, responsible for the occupancy and allocation logic.</div>
+      <div class="ppo">
+        <div class="ppo-col">
+          <h4>Purpose</h4>
+          <p>Congested lots meant long, unpredictable search times for an open parking space.</p>
+          <a class="btn ph" href="#">Add link to brief</a>
+        </div>
+        <div class="ppo-col">
+          <h4>Process</h4>
+          <p>Designed a model using real-time occupancy sensors and optimized space-allocation logic to route vehicles to open spots.</p>
+          <a class="btn ph" href="#">Add link to workfile</a>
+        </div>
+        <div class="ppo-col">
+          <h4>Outcome</h4>
+          <p>Cut simulated search time for open spots; the model was presented at the G20 Summit.</p>
+          <a class="btn ph" href="#">Add link to demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="tight">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Capability</div>
+      <h2>Skills &amp; tools</h2>
+      <p>Kept as two separate lists — what I can do, and what I use to do it. Every line here is demonstrated in a project above.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="split">
+      <div class="split-col">
+        <h3>Skills</h3>
+        <ul class="led-list">
+          <li>Direct &amp; Indirect Taxation</li>
+          <li>Income Tax Return (ITR) Filing</li>
+          <li>TDS Compliance</li>
+          <li>Equity Research</li>
+          <li>Technical &amp; Fundamental Analysis</li>
+          <li>Financial Modeling</li>
+          <li>Financial Statement Analysis</li>
+        </ul>
+      </div>
+      <div class="split-col">
+        <h3>Tools</h3>
+        <ul class="led-list">
+          <li>MS Excel <span class="lvl">advanced</span></li>
+          <li>Power BI <span class="lvl">beginner</span></li>
+          <li>Screener.in <span class="lvl">working knowledge</span></li>
+          <li>Python <span class="lvl">basics</span></li>
+          <li>Java <span class="lvl">basics</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="record">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Experience</div>
+      <h2>Track record</h2>
+    </div>
+
+    <div class="record">
+      <div class="record-head">
+        <h3>Data Operator (Assistant to Accountant), Direct Tax &amp; Accounts</h3>
+        <span>Jan 2024 &ndash; May 2025</span>
+      </div>
+      <div class="record-org">Raja &amp; Co. Overseas Pvt. Ltd. &middot; Amritsar, Punjab</div>
+      <ul>
+        <li>Filed 6 Income Tax Returns as assistant to the accountant, applying correct tax slabs and deduction claims for on-time statutory compliance.</li>
+        <li>Reconciled TDS records and supporting schedules ahead of filing, minimizing discrepancies and compliance risk.</li>
+        <li>Represented the accountant in recurring B2B client meetings to resolve documentation queries.</li>
+        <li>Validated high-volume transaction data across client accounts, maintaining database accuracy for tax reporting.</li>
+      </ul>
+    </div>
+
+    <div class="record">
+      <div class="record-head">
+        <h3>Anti-Ragging Head</h3>
+        <span>Jul 2025 &ndash; Present</span>
+      </div>
+      <div class="record-org">Fortune Institute of International Business, New Delhi</div>
+      <ul>
+        <li>Lead campus safety initiatives across the student body through proactive monitoring, awareness campaigns, and coordination with the administration.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="recognition" class="tight">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Recognition</div>
+      <h2>Achievements</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="two-up">
+      <div class="two-up-col">
+        <h3>Sport</h3>
+        <ul>
+          <li>3-time Silver Medalist, National Rope Skipping Championship</li>
+          <li>2-time Gold Medalist, Zonal Level Rope Skipping Championship</li>
+          <li>Silver Medalist, University Level Cricket Championship, 2023</li>
+        </ul>
+      </div>
+      <div class="two-up-col" id="certifications">
+        <h3>Certifications</h3>
+        <div class="cert-row">
+          <div class="cert-name">Power BI: Dashboards<span>Issued 2022</span></div>
+          <a class="btn ph" href="#">Add verification link</a>
+        </div>
+        <div class="cert-row">
+          <div class="cert-name">Finance and Accounting Tips<span>LinkedIn Learning</span></div>
+          <a class="btn ph" href="#">Add verification link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">Sulabh Aggarwal</div>
+        <div class="contact-item" style="border:none;padding:0;"><a href="mailto:27-sulabh.aggarwal@fiib.edu.in">27-sulabh.aggarwal@fiib.edu.in</a> &nbsp;&middot;&nbsp; +91 70875 35950 &nbsp;&middot;&nbsp; New Delhi, NCR</div>
+      </div>
+      <div class="navlinks">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills &amp; tools</a>
+        <a href="#record">Track record</a>
+        <a href="https://www.linkedin.com/in/sulabh-aggarwal" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-note">Every button styled with a dashed gold border is a placeholder — swap it for a real, tested link before sharing this portfolio.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navtoggle').addEventListener('click', function(){
+    document.getElementById('navlinks').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
